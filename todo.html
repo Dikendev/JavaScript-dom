@@ -15,7 +15,32 @@
   <div id="todo-list"></div>
   
   <script>
-    const todos = [{
+/* 
+    MVC
+      Model:  Contains all the code that saves and manages data.
+      
+      View: Contains all the code that manages visual. RENDER visuals using data in the mode.
+      
+      Controller: Connects model and view together:
+
+      1_ Responds to events from the view (e.g button clicks)
+      2_ Tells the model to update its data (and the view to re-render)
+
+ */
+
+    // Model
+
+   /* if localStorage has a todos array, them use it.
+      Otherwise use the default array. */
+    let todos;
+
+    // Retrieve localStorage
+    const savedTodos = JSON.parse(localStorage.getItem('todos'));
+    // Check if it's an array
+    if (Array.isArray(savedTodos)) {
+      todos = savedTodos;
+    } else {
+      todos = [{
       title:  'Get groceries',
       dueDate: '2022-10-04',
       id: 'id1'
@@ -28,30 +53,11 @@
       dueDate: '1996-10-04',
       id: 'id3'
     }];
-
-    render();
-
-    function deleteTodo(event) {
-      const deleteButton = event.target;
-      const idToDelete = deleteButton.id;
-       // loop through each item in the array
-     
-      todos.filter(function (todo) {
-        // if the id of this todo maches idToDelete, retur false
-        // for everyThing else, return false.
-
-
-      });
     }
 
-    function addTodo() {
-      const textbox = document.getElementById('todo-title');
-      const title = textbox.value;
-
-      const datePicker = document.getElementById('date-picker');
-      const dueDate = datePicker.value;
-
-      const id = new Date().getTime();
+    // Creates a todo >>>>>>
+    function createTodo(title, dueDate) {
+      const id = ' ' + new Date().getTime();
 
       todos.push({
         title: title,
@@ -59,15 +65,61 @@
         id: id
       });
 
+      saveTodos();
+    }
+
+    // Deletes a todo >>>>>> all related to managing data.
+    
+    function removeTodo(idToDelete) {
+      todos = todos.filter(function (todo) {  
+        // if the id of this todo maches idToDelete, return false
+        // for everyThing else, return true.
+        if (todo.id === idToDelete) {
+          return false;
+        } else {
+          return true;
+        }
+      });
+
+      saveTodos();
+    }
+    
+    function saveTodos() {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    }
+
+    render();
+
+    // Controller 
+    function addTodo() {
+      const textbox = document.getElementById('todo-title');
+      const title = textbox.value;
+
+      const datePicker = document.getElementById('date-picker');
+      const dueDate = datePicker.value;
+
+      createTodo(title, dueDate);
       render();
     }
 
+    const addTodo2 = function name(params) {
+      
+    }
 
+    function deleteTodo(event) {
+      const deleteButton = event.target;
+      const idToDelete = deleteButton.id;
+       // loop through each item in the array
+     
+      removeTodo(idToDelete)
+      render()
+    }
+
+    // View 
     function render() {
-       
+      // reset our list
       document.getElementById('todo-list').innerHTML = '';
-
-
+      
       todos.forEach(function(todo){
         const element = document.createElement('div');
         element.innerText = todo.title + ' ' + todo.dueDate;
@@ -81,9 +133,7 @@
 
         const todoList = document.getElementById('todo-list')
         todoList.appendChild(element);
-
       });
-
     }
   </script>
 
