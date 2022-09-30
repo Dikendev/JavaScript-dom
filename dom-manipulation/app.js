@@ -21,7 +21,7 @@ console.log(listItem);
 
 // getElementByTagName()
 
-const   
+  
 
 
 //querySelector()
