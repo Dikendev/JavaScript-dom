@@ -1,31 +1,20 @@
-// DOm Manipulation
+// // DOm Manipulation
+
+
+// // const title = document.querySelector('#main-heading');
+
+// // title.style.color = 'blue';
+
+// const listitems = document.querySelectorAll('li');
+
+
+// for(i = 0; i < listitems.length; i++) {
+//     listitems[i].style.fontSize = '1rem';
+// }
+
+// console.log(listitems);
 
 
 
+// creating elements
 
-
-// GetElementById()
-
-const title = document.getElementById('main-heading');
-
-console.log(title);
-
-
-
-// GetElementByClassName()
-
-const listItem = document.getElementsByClassName('list-items')
-
-console.log(listItem);
-
-
-// getElementByTagName()
-
-  
-
-
-//querySelector()
-
-
-
-//querySelectorAll()
