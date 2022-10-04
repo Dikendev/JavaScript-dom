@@ -18,3 +18,17 @@
 
 // creating elements
 
+const ul = document.querySelector('ul');
+const li = document.createElement('li');
+
+
+// adding Elements
+ul.append(li);
+
+// modifying the text
+
+li.innerText = 'X-Men';
+
+// Modifying Atttributes & Classes
+
+li.classList.add
