@@ -15,7 +15,7 @@ h1 {
     justify-content: space-around;
 }
 
-.container .exe1 {
+.container .boxes {
     width: 120px;
     height: auto;
     border: 1px solid #fff;
@@ -31,7 +31,7 @@ h1 {
 
 }
 
-.container .exe1  .ex {
+.container .boxes  .heading {
     height: 25px;
     display: flex;
     justify-content: center;
@@ -39,7 +39,7 @@ h1 {
 
 
 }
-.container .exe1 .button {
+.container .boxes > button {
     width: 65px;
     height: 26px;
     border: 1px solid #fff;
@@ -49,4 +49,6 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(245, 222, 179, 0);
+    color: #fff;
 }
